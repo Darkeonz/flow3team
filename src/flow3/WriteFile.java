@@ -23,7 +23,7 @@ public class WriteFile
         
     }
 
-    public void saveFile(ArrayList<Word> liste)
+    public boolean saveFile(ArrayList<Word> liste)
     {
         PrintWriter pw;
         
@@ -34,6 +34,7 @@ public class WriteFile
             for (int i = 0; i < liste.size(); i++)
             {
                 pw.println(liste.get(i).toSaveString());
+                System.out.println(liste.get(i).toSaveString());
             }
             
             pw.close(); 
@@ -42,8 +43,10 @@ public class WriteFile
         catch (FileNotFoundException ex)
         {
             System.out.println("Fejl: " + ex.getMessage());
+        return false;
         }
-    }
+    return true;}
+    
 }
     
     

@@ -10,36 +10,89 @@ import java.util.ArrayList;
  *
  * @author Andreas
  */
-public class Control
-{
+public class Control implements WordPairControlIF {
 
     private WriteFile writefile;
     private ReadFile readfile;
     private ArrayList<Word> words = new ArrayList<>();
-    WriteFile wf = new WriteFile();
-    ReadFile rf = new ReadFile();
 
-    public void setWritefile(WriteFile writefile)
-    {
-        writefile.saveFile(words);
-        this.writefile = writefile;
+    public Control() {
+        writefile = new WriteFile();
+        readfile = new ReadFile();
     }
 
-    public ReadFile getReadfile()
-    {
-        readfile = rf.getTxt();
-        return readfile;
+    @Override
+    public void add(String danish, String english) {
+
+
+        words.add(new Word(danish, english));
     }
 
-    public WriteFile getWritefile()
-    {
-        
-        return writefile;
+    @Override
+    public boolean delete(String question) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void addWords(String danish, String english)
-    {
-        Word p = new Word(danish, english);
-        words.add(p);
+    @Override
+    public int size() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public String getRandomQuestion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean checkGuess(String question, String quess) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String lookup(String danish) {
+        for (int i = 0; i < words.size(); i++) {
+            if (words.get(i).getDanword().equals(danish)) {
+            }
+        }
+    }
+
+    @Override
+    public boolean load() {
+
+        return readfile.getTxt(words);
+    }
+
+    @Override
+    public boolean save() {
+        return writefile.saveFile(words);
+    }
+
+    @Override
+    public void clear() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+//
+//    public void setWritefile(WriteFile writefile)
+//    {
+//        writefile.saveFile(words);
+//        this.writefile = writefile;
+//    }
+//
+//    public ReadFile getReadfile()
+//    {
+//        readfile = rf.getTxt();
+//        return readfile;
+//    }
+//
+//    public WriteFile getWritefile()
+//    {
+//        
+//        return writefile;
+//    }
+//
+//    public void addWords(String danish, String english)
+//    {
+//        Word p = new Word(danish, english);
+//        words.add(p);
+//    }
 }
