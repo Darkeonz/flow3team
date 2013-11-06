@@ -1,1 +1,2 @@
-jordkloden,earth
+abe,monkey
+stol,chair

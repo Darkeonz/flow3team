@@ -221,6 +221,7 @@ public class Gui extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
+        
         String word = control.getRandomQuestion();
         jQuestion.setText(word);
         jAnswer.setText("");
@@ -259,6 +260,7 @@ public class Gui extends javax.swing.JFrame
     {//GEN-HEADEREND:event_jButton2ActionPerformed
         String danish = jQuestion.getText();
         String english = jAnswer.getText();
+        
         if (control.checkGuess(danish, english))
         {
             statusjLabel.setText("Correct!");

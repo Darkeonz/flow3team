@@ -78,7 +78,7 @@ public class Control implements WordPairControlIF
     {
         for (int i = 0; i < words.size(); i++)
         {
-            if (words.get(i).getDanword().equals(danish) && words.get(i).getEngword().equals(english))
+            if (words.get(i).getDanword().equalsIgnoreCase(danish) && words.get(i).getEngword().equalsIgnoreCase(english))
             {
                 return true;
             }
@@ -122,28 +122,5 @@ public class Control implements WordPairControlIF
             words.clear();
         }
     }
-//
-//    public void setWritefile(WriteFile writefile)
-//    {
-//        writefile.saveFile(words);
-//        this.writefile = writefile;
-//    }
-//
-//    public ReadFile getReadfile()
-//    {
-//        readfile = rf.getTxt();
-//        return readfile;
-//    }
-//
-//    public WriteFile getWritefile()
-//    {
-//        
-//        return writefile;
-//    }
-//
-//    public void addWords(String danish, String english)
-//    {
-//        Word p = new Word(danish, english);
-//        words.add(p);
-//    }
+
 }
