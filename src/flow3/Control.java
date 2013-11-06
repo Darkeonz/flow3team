@@ -10,67 +10,87 @@ import java.util.ArrayList;
  *
  * @author Andreas
  */
-public class Control implements WordPairControlIF {
+public class Control implements WordPairControlIF
+{
 
     private WriteFile writefile;
     private ReadFile readfile;
     private ArrayList<Word> words = new ArrayList<>();
+    private int count = 0;
 
-    public Control() {
+    public Control()
+    {
         writefile = new WriteFile();
         readfile = new ReadFile();
     }
 
     @Override
-    public void add(String danish, String english) {
-
-
-        words.add(new Word(danish, english));
+    public void add(String danish, String english)
+    {
+        for (int i = 0; i < words.size(); i++)
+        {
+            if (!words.contains(words.get(i)))
+            {
+                words.add(new Word(danish, english));
+            }
+        } 
     }
 
     @Override
-    public boolean delete(String question) {
+    public boolean delete(String question)
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int size() {
+    public int size()
+    {
+        int size = words.size();
+        return size;
+    }
+
+    @Override
+    public String getRandomQuestion()
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String getRandomQuestion() {
+    public boolean checkGuess(String question, String quess)
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean checkGuess(String question, String quess) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String lookup(String danish) {
-        for (int i = 0; i < words.size(); i++) {
-             if (words.get(i).getDanword().equals(danish)){
+    public String lookup(String danish)
+    {
+        for (int i = 0; i < words.size(); i++)
+        {
+            if (words.get(i).getDanword().equals(danish))
+            {
                 String english = words.get(i).getEngword();
                 return english;
             }
-        } return "The wordpair does not exist";
+        }
+        return "The wordpair does not exist";
     }
 
     @Override
-    public boolean load() {
+    public boolean load()
+    {
 
         return readfile.getTxt(words);
     }
 
     @Override
-    public boolean save() {
+    public boolean save()
+    {
         return writefile.saveFile(words);
     }
 
     @Override
-    public void clear() {
+    public void clear()
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 //
