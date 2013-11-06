@@ -8,10 +8,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Flow 2 - "Team"
+ * Flow 3 - "Team"
  * Udarbejdet af:
  * Andreas og Emil
- * Torsdag 10.10.2013
+ * 
  */
 
 //Denne klasse indeholder metoder til at skrive i tekstfiler.

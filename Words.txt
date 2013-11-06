@@ -1,2 +1,2 @@
-abe,monkey
-stol,chair
+ord,word
+hest,horse

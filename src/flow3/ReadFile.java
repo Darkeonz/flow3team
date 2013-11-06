@@ -8,14 +8,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Flow 2 - "Team" Udarbejdet af: Andreas og Emil
+ * Flow 3 - "Team" Udarbejdet af: Andreas og Emil
  *
  */
 //Denne klasse indeholder metoder til at læse i tekstfiler.
 public class ReadFile {
 
     public boolean getTxt(ArrayList<Word> personlist) {
-        //Herunder ses referencen til den textfil, der indeholder vores person-data:
+        //Herunder ses referencen til den textfil, der indeholder vores ord-data:
         String fileName = "words.txt";
 
         //Dette vil læse én linie ad gangen:

@@ -6,7 +6,7 @@ package flow3;
 
 //**
 // *
-// * @author Andreas
+// * @author Andreas & Emil
 
     
     public interface WordPairControlIF {
