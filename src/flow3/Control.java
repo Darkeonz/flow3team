@@ -5,6 +5,7 @@
 package flow3;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -49,13 +50,10 @@ public class Control implements WordPairControlIF
     @Override
     public String getRandomQuestion()
     {
-        for (int i = 0; i < words.size(); i++)
-        {
-            String danish = words.get(i).getDanword();
-        
-            return danish;
-        }
-        return null;
+       Random random = new Random();
+       int nummer = random.nextInt(size());
+       return words.get(nummer).getDanword();
+       
     }
 
     @Override
