@@ -138,14 +138,10 @@ public class Gui extends javax.swing.JFrame
                                 .addComponent(saveWordsButton)))
                         .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton4)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(21, 21, 21))))
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
+                        .addGap(21, 21, 21))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(21, 21, 21))
@@ -188,7 +184,7 @@ public class Gui extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
@@ -213,6 +209,7 @@ public class Gui extends javax.swing.JFrame
     private void saveWordsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveWordsButtonActionPerformed
     {//GEN-HEADEREND:event_saveWordsButtonActionPerformed
         Boolean save = control.save();
+        jLabelcounter.setText("" + control.size());
         if (save)
         {
             statusjLabel.setText("Words has been saved");
@@ -226,6 +223,11 @@ public class Gui extends javax.swing.JFrame
     {//GEN-HEADEREND:event_jButton1ActionPerformed
         String word = control.getRandomQuestion();
         jQuestion.setText(word);
+        jAnswer.setText("");
+        jLabelcounter.setText("" + control.size());
+        if (jQuestion.getText().equals("")){
+            statusjLabel.setText("There are no more wordpairs");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jQuestionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jQuestionActionPerformed
@@ -262,6 +264,7 @@ public class Gui extends javax.swing.JFrame
             statusjLabel.setText("Correct!");
             control.delete(jQuestion.getText());
             control.delete(jAnswer.getText());
+            jLabelcounter.setText("" + control.size());
         } else
         {
             statusjLabel.setText("Wrong. Try agian");
