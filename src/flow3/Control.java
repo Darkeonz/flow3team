@@ -36,14 +36,20 @@ public class Control implements WordPairControlIF
 
     @Override
     public boolean delete(String danish)
- {
-        for (int i = 0; i < words.size(); i++){
-        if (danish.equals(words.get(i).getDanword())==true || danish.equals(words.get(i).getEngword())==true){
-            words.remove(i);
-            return true;
+    {
+        for (int i = 0; i < words.size(); i++)
+        {
+            if (danish.equals(words.get(i).getDanword()) == true || danish.equals(words.get(i).getEngword()) == true)
+            {
+
+                words.remove(i);
+                return true;
+
+
+            }
         }
-            
-    }
+
+
         return false;
     }
 
@@ -70,9 +76,16 @@ public class Control implements WordPairControlIF
         {
             if (words.get(i).getDanword().equals(danish) && words.get(i).getEngword().equals(english))
             {
-                return true;
+                if (words.isEmpty())
+                {
+
+                    return false;
+                } else
+                {
+                    return true;
+                }
             }
-        }   
+        }
         return false;
     }
 

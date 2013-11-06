@@ -234,11 +234,14 @@ public class Gui extends javax.swing.JFrame
     }//GEN-LAST:event_jQuestionActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        
         String danish = jQuestion.getText();
         String english = jAnswer.getText();
         control.add(danish, english);
         statusjLabel.setText("Words has been added");
         jLabelcounter.setText("" + control.size());
+        
+               
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -253,13 +256,16 @@ public class Gui extends javax.swing.JFrame
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
         String danish = jQuestion.getText();
-      String english = jAnswer.getText();
-      if (control.checkGuess(danish, english))
-      {
-          statusjLabel.setText("Correct!");
-      }
-      else 
-          statusjLabel.setText("Wrong. Try agian");
+        String english = jAnswer.getText();
+        if (control.checkGuess(danish, english))
+        {
+            statusjLabel.setText("Correct!");
+            control.delete(jQuestion.getText());
+            control.delete(jAnswer.getText());
+        } else
+        {
+            statusjLabel.setText("Wrong. Try agian");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
