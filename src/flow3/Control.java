@@ -27,13 +27,10 @@ public class Control implements WordPairControlIF
     @Override
     public void add(String danish, String english)
     {
-        for (int i = 0; i < words.size(); i++)
-        {
-            if (!words.contains(words.get(i)))
-            {
+       
+   if (lookup(danish) == null){
                 words.add(new Word(danish, english));
-            }
-        } 
+    }
     }
 
     @Override
@@ -72,7 +69,7 @@ public class Control implements WordPairControlIF
                 return english;
             }
         }
-        return "The wordpair does not exist";
+        return null;
     }
 
     @Override

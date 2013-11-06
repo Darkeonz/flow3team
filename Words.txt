@@ -1,2 +1,5 @@
-hjhh,hhhh
-hjhh,hhhh
+﻿hest,horse
+ko,cow
+jordkloden,earth
+bord,table
+dør,door
