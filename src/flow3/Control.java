@@ -64,9 +64,16 @@ public class Control implements WordPairControlIF
     }
 
     @Override
-    public boolean checkGuess(String question, String quess)
+    public boolean checkGuess(String danish, String english)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int i = 0; i < words.size(); i++)
+        {
+            if (words.get(i).getDanword().equals(danish) && words.get(i).getEngword().equals(english))
+            {
+                return true;
+            }
+        }   
+        return false;
     }
 
     @Override

@@ -3,3 +3,8 @@ ko,cow
 jordkloden,earth
 bord,table
 dør,door
+hest,horse
+hus,house
+orm,worm
+tærte,pie
+marmelade,jam

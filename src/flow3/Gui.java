@@ -252,8 +252,14 @@ public class Gui extends javax.swing.JFrame
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
-        control.delete(jQuestion.getText());
-        control.delete(jAnswer.getText());
+        String danish = jQuestion.getText();
+      String english = jAnswer.getText();
+      if (control.checkGuess(danish, english))
+      {
+          statusjLabel.setText("Correct!");
+      }
+      else 
+          statusjLabel.setText("Wrong. Try agian");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
