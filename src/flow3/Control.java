@@ -51,9 +51,11 @@ public class Control implements WordPairControlIF {
     @Override
     public String lookup(String danish) {
         for (int i = 0; i < words.size(); i++) {
-            if (words.get(i).getDanword().equals(danish)) {
+             if (words.get(i).getDanword().equals(danish)){
+                String english = words.get(i).getEngword();
+                return english;
             }
-        }
+        } return "The wordpair does not exist";
     }
 
     @Override
