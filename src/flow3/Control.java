@@ -17,7 +17,6 @@ public class Control implements WordPairControlIF
     private WriteFile writefile;
     private ReadFile readfile;
     private ArrayList<Word> words = new ArrayList<>();
-    private int count = 0;
 
     public Control()
     {
@@ -28,16 +27,24 @@ public class Control implements WordPairControlIF
     @Override
     public void add(String danish, String english)
     {
-       
-   if (lookup(danish) == null){
-                words.add(new Word(danish, english));
-    }
+
+        if (lookup(danish) == null)
+        {
+            words.add(new Word(danish, english));
+        }
     }
 
     @Override
-    public boolean delete(String question)
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean delete(String danish)
+ {
+        for (int i = 0; i < words.size(); i++){
+        if (danish.equals(words.get(i).getDanword())==true || danish.equals(words.get(i).getEngword())==true){
+            words.remove(i);
+            return true;
+        }
+            
+    }
+        return false;
     }
 
     @Override
@@ -50,10 +57,10 @@ public class Control implements WordPairControlIF
     @Override
     public String getRandomQuestion()
     {
-       Random random = new Random();
-       int nummer = random.nextInt(size());
-       return words.get(nummer).getDanword();
-       
+        Random random = new Random();
+        int nummer = random.nextInt(size());
+        return words.get(nummer).getDanword();
+
     }
 
     @Override
@@ -92,8 +99,10 @@ public class Control implements WordPairControlIF
     @Override
     public void clear()
     {
-         for (int i = 0; i < words.size(); i++)
-        words.clear();
+        for (int i = 0; i < words.size(); i++)
+        {
+            words.clear();
+        }
     }
 //
 //    public void setWritefile(WriteFile writefile)
