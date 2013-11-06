@@ -49,7 +49,13 @@ public class Control implements WordPairControlIF
     @Override
     public String getRandomQuestion()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int i = 0; i < words.size(); i++)
+        {
+            String danish = words.get(i).getDanword();
+        
+            return danish;
+        }
+        return null;
     }
 
     @Override
@@ -88,7 +94,8 @@ public class Control implements WordPairControlIF
     @Override
     public void clear()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         for (int i = 0; i < words.size(); i++)
+        words.clear();
     }
 //
 //    public void setWritefile(WriteFile writefile)
