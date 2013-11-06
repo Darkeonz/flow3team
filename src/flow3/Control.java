@@ -63,9 +63,13 @@ public class Control implements WordPairControlIF
     @Override
     public String getRandomQuestion()
     {
-        Random random = new Random();
+        if (words.isEmpty())
+        {
+        return null;
+        }
+        else {Random random = new Random();
         int nummer = random.nextInt(size());
-        return words.get(nummer).getDanword();
+        return words.get(nummer).getDanword();}
 
     }
 
@@ -76,15 +80,9 @@ public class Control implements WordPairControlIF
         {
             if (words.get(i).getDanword().equals(danish) && words.get(i).getEngword().equals(english))
             {
-                if (words.isEmpty())
-                {
-
-                    return false;
-                } else
-                {
-                    return true;
-                }
+                return true;
             }
+
         }
         return false;
     }
