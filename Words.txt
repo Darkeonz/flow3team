@@ -1,2 +1,8 @@
-ord,word
 hest,horse
+elg,moose
+abe,monkey
+kokosnød,coconut
+ur,watch
+rør,pibe
+båd,boat
+vej,road

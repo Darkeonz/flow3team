@@ -11,7 +11,7 @@ import java.util.Random;
  *
  * @author Andreas
  */
-public class Control implements WordPairControlIF
+public class Control implements QuizzControlIF
 {
 
     private WriteFile writefile;
@@ -25,21 +25,21 @@ public class Control implements WordPairControlIF
     }
 
     @Override
-    public void add(String danish, String english)
+    public void add(String question, String answer)
     {
 
-        if (lookup(danish) == null)
+        if (lookup(question) == null)
         {
-            words.add(new Word(danish, english));
+            words.add(new Word(question, answer));
         }
     }
 
     @Override
-    public boolean delete(String danish)
+    public boolean delete(String question)
     {
         for (int i = 0; i < words.size(); i++)
         {
-            if (danish.equals(words.get(i).getDanword()) == true || danish.equals(words.get(i).getEngword()) == true)
+            if (question.equals(words.get(i).getDanword()) == true || question.equals(words.get(i).getEngword()) == true)
             {
 
                 words.remove(i);
@@ -74,11 +74,11 @@ public class Control implements WordPairControlIF
     }
 
     @Override
-    public boolean checkGuess(String danish, String english)
+    public boolean checkGuess(String question, String answer)
     {
         for (int i = 0; i < words.size(); i++)
         {
-            if (words.get(i).getDanword().equalsIgnoreCase(danish) && words.get(i).getEngword().equalsIgnoreCase(english))
+            if (words.get(i).getDanword().equalsIgnoreCase(question) && words.get(i).getEngword().equalsIgnoreCase(answer))
             {
                 return true;
             }
@@ -88,11 +88,11 @@ public class Control implements WordPairControlIF
     }
 
     @Override
-    public String lookup(String danish)
+    public String lookup(String question)
     {
         for (int i = 0; i < words.size(); i++)
         {
-            if (words.get(i).getDanword().equals(danish))
+            if (words.get(i).getDanword().equals(question))
             {
                 String english = words.get(i).getEngword();
                 return english;
@@ -121,6 +121,30 @@ public class Control implements WordPairControlIF
         {
             words.clear();
         }
+    }
+
+    @Override
+    public String[] getGameNames()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void selectGame(String gameName)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getSelectedGameName()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean addGame(String name)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

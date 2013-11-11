@@ -12,38 +12,39 @@ public class Word
 {
     //Herunder attributterne:
 
-    private String danword;
-    private String engword;
+    private String question;
+    private String answer;
 
-    public Word(String danishword, String englishword)
+
+    public Word(String question, String answer)
     {
-        this.danword = danishword;
-        this.engword = englishword;
-
+        this.question = question;
+        this.answer = answer;
+        
     }
 
     public String getDanword()
     {
-        return danword;
+        return question;
     }
 
     public void setDanword(String danword)
     {
-        this.danword = danword;
+        this.question = danword;
     }
 
     public String getEngword()
     {
-        return engword;
+        return answer;
     }
 
     public void setEngword(String engword)
     {
-        this.engword = engword;
+        this.answer = engword;
     }
 
     public String toSaveString()
     {
-        return danword + "," + engword;
+        return question + "," + answer;
     }
 }

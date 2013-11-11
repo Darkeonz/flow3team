@@ -30,10 +30,11 @@ public class ReadFile {
 
             while ((line = bufferedReader.readLine()) != null) {
                 String[] part = line.split(",");
-                String danname = part[0];
-                String engname = (part[1]);
+                String question = part[0];
+                String answer = part[1];
+                
 
-                Word p = new Word(danname, engname);
+                Word p = new Word(question, answer);
                 personlist.add(p);
             }
 
