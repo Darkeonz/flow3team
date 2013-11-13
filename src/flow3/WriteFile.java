@@ -23,7 +23,7 @@ public class WriteFile
         
     }
 
-    public boolean saveFile(ArrayList<Word> liste)
+    public boolean saveFile(ArrayList<Question> liste)
     {
         PrintWriter pw;
         

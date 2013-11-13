@@ -1,4 +1,4 @@
-hest,horse
+﻿hest,horse
 elg,moose
 abe,monkey
 kokosnød,coconut

@@ -8,7 +8,7 @@ package flow3;
  *
  * @author Andreas & Emil
  */
-public class Word
+public class Question
 {
     //Herunder attributterne:
 
@@ -16,7 +16,7 @@ public class Word
     private String answer;
 
 
-    public Word(String question, String answer)
+    public Question(String question, String answer)
     {
         this.question = question;
         this.answer = answer;

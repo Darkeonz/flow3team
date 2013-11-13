@@ -16,7 +16,8 @@ public class Control implements QuizzControlIF
 
     private WriteFile writefile;
     private ReadFile readfile;
-    private ArrayList<Word> words = new ArrayList<>();
+    private ArrayList<Category> categories = new ArrayList<>();
+    private Category currentCategory = null;
 
     public Control()
     {
@@ -30,19 +31,19 @@ public class Control implements QuizzControlIF
 
         if (lookup(question) == null)
         {
-            words.add(new Word(question, answer));
+            categories.add(new Question(question, answer));
         }
     }
 
     @Override
     public boolean delete(String question)
     {
-        for (int i = 0; i < words.size(); i++)
+        for (int i = 0; i < categories.size(); i++)
         {
-            if (question.equals(words.get(i).getDanword()) == true || question.equals(words.get(i).getEngword()) == true)
+            if (question.equals(categories.get(i).getDanword()) == true || question.equals(categories.get(i).getEngword()) == true)
             {
 
-                words.remove(i);
+                categories.remove(i);
                 return true;
 
 
@@ -56,29 +57,29 @@ public class Control implements QuizzControlIF
     @Override
     public int size()
     {
-        int size = words.size();
+        int size = categories.size();
         return size;
     }
 
     @Override
     public String getRandomQuestion()
     {
-        if (words.isEmpty())
+        if (categories.isEmpty())
         {
         return null;
         }
         else {Random random = new Random();
         int nummer = random.nextInt(size());
-        return words.get(nummer).getDanword();}
+        return categories.get(nummer).getDanword();}
 
     }
 
     @Override
     public boolean checkGuess(String question, String answer)
     {
-        for (int i = 0; i < words.size(); i++)
+        for (int i = 0; i < categories.size(); i++)
         {
-            if (words.get(i).getDanword().equalsIgnoreCase(question) && words.get(i).getEngword().equalsIgnoreCase(answer))
+            if (categories.get(i).getDanword().equalsIgnoreCase(question) && categories.get(i).getEngword().equalsIgnoreCase(answer))
             {
                 return true;
             }
@@ -90,11 +91,11 @@ public class Control implements QuizzControlIF
     @Override
     public String lookup(String question)
     {
-        for (int i = 0; i < words.size(); i++)
+        for (int i = 0; i < categories.size(); i++)
         {
-            if (words.get(i).getDanword().equals(question))
+            if (categories.get(i).getDanword().equals(question))
             {
-                String english = words.get(i).getEngword();
+                String english = categories.get(i).getEngword();
                 return english;
             }
         }
@@ -105,28 +106,37 @@ public class Control implements QuizzControlIF
     public boolean load()
     {
 
-        return readfile.getTxt(words);
+        return readfile.getTxt(categories);
     }
 
     @Override
     public boolean save()
     {
-        return writefile.saveFile(words);
+        return writefile.saveFile(categories);
     }
 
     @Override
     public void clear()
     {
-        for (int i = 0; i < words.size(); i++)
+        for (int i = 0; i < categories.size(); i++)
         {
-            words.clear();
+            categories.clear();
         }
     }
 
     @Override
     public String[] getGameNames()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        readfile.getTxt(categories);
+        
+        String[] resultat = new String[categories.size()];
+        
+        for (int i = 0; i < categories.size(); i++)
+        {
+            resultat[i] = categories.get(i).getName();
+        }
+        
+        return resultat;
     }
 
     @Override

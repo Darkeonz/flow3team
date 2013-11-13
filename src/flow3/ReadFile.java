@@ -14,7 +14,7 @@ import java.util.ArrayList;
 //Denne klasse indeholder metoder til at læse i tekstfiler.
 public class ReadFile {
 
-    public boolean getTxt(ArrayList<Word> personlist) {
+    public boolean getTxt(ArrayList<Category> categories) {
         //Herunder ses referencen til den textfil, der indeholder vores ord-data:
         String fileName = "words.txt";
 
@@ -28,14 +28,31 @@ public class ReadFile {
             //Læser tekst fra en karakter-input stream, buffer tegn, så som at sørge for effektiv læsning af tegn, arrays og linjer.
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
+            Category category = null;
+            
             while ((line = bufferedReader.readLine()) != null) {
                 String[] part = line.split(",");
-                String question = part[0];
-                String answer = part[1];
                 
-
-                Word p = new Word(question, answer);
-                personlist.add(p);
+                if (part.length == 1)
+                {
+                    // Kategori
+                    category = new Category();
+                    
+                    category.setName(part[0]);
+                    
+                    categories.add(category);
+                }
+                
+                if (part.length == 2)
+                {
+                    // Spørgsmål / svar
+                    if (category != null)
+                    {
+                        Question p = new Question(part[0], part[1]);
+                        
+                        category.getQuestions().add(p);
+                    }
+                }    
             }
 
             // Lukker filen.
