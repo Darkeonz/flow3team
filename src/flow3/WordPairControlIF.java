@@ -22,7 +22,7 @@ package flow3;
      * Returns true if a word pair is removed. Otherwise false.
      */
     boolean delete(String question);
-
+ 
     /**
      * Returns the number of wordpairs
      */

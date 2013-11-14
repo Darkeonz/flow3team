@@ -135,7 +135,7 @@ public class Control implements QuizzControlIF
         {
             resultat[i] = categories.get(i).getName();
         }
-        
+         
         return resultat;
     }
 

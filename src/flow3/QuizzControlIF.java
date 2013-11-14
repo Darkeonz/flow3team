@@ -20,7 +20,7 @@ void selectGame(String gameName);
 * Returns the name of the game presently selected. If no game is selected it returns null.
 */
 String getSelectedGameName();
-
+ 
 /**
 * Post: A new game with the passed name is created
 * Returns false if a game with the passed name already exists. Otherwise true.

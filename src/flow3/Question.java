@@ -27,7 +27,7 @@ public class Question
     {
         return question;
     }
-
+ 
     public void setDanword(String danword)
     {
         this.question = danword;
