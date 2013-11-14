@@ -10,7 +10,8 @@ import javax.swing.DefaultListModel;
  *
  * @author Andreas & Emil
  */
-public class Gui extends javax.swing.JFrame {
+public class Gui extends javax.swing.JFrame
+{
 
     /**
      * Creates new form Gui
@@ -18,7 +19,8 @@ public class Gui extends javax.swing.JFrame {
     QuizzControlIF control = new Control();
     DefaultListModel model1;
 
-    public Gui() {
+    public Gui()
+    {
         initComponents();
         control.load();
         model1 = new DefaultListModel();
@@ -188,7 +190,7 @@ public class Gui extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 25, Short.MAX_VALUE)
+                        .addGap(0, 139, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1)
                             .addComponent(jTextGame)
@@ -326,7 +328,6 @@ public class Gui extends javax.swing.JFrame {
 
     private void jSelectGameActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jSelectGameActionPerformed
     {//GEN-HEADEREND:event_jSelectGameActionPerformed
-
     }//GEN-LAST:event_jSelectGameActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton6ActionPerformed
@@ -346,8 +347,13 @@ public class Gui extends javax.swing.JFrame {
         control.load();
         statusjLabel.setText("Questions from textfile has been loaded");
         jLabelcounter.setText("" + control.size());
-        model1.addElement(control.getGameNames());
-        System.out.println("" + control.getGameNames());
+//        model1.addElement(control.getGameNames().toString());
+        String[] midlertidig = control.getGameNames();
+        for (int i = 0; i < midlertidig.length; i++)
+        {
+            model1.addElement(midlertidig[i]);
+        }
+
         //Remember to make sure questions are only loaded once
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -419,33 +425,43 @@ public class Gui extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new Gui().setVisible(true);
             }
         });
