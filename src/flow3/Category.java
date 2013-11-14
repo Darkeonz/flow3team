@@ -22,7 +22,6 @@ public class Category
     {
         this.question = question;
         this.answer = answer;
-
     }
 
     public String getQuestion()

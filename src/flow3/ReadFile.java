@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 //Denne klasse indeholder metoder til at læse i tekstfiler.
 public class ReadFile {
+    
 
     public boolean getTxt(ArrayList<Category> categories) {
         //Herunder ses referencen til den textfil, der indeholder vores ord-data:
@@ -36,7 +37,7 @@ public class ReadFile {
                 if (part.length == 1)
                 {
                     // Kategori
-                    category = new Category();
+                    category = new Category("","");
                     
                     category.setName(part[0]);
                     
