@@ -12,17 +12,19 @@ import java.util.ArrayList;
  *
  */
 //Denne klasse indeholder metoder til at læse i tekstfiler.
-public class ReadFile {
-    
+public class ReadFile
+{
 
-    public boolean getTxt(ArrayList<Category> categories) {
+    public boolean getTxt(ArrayList<Category> categories)
+    {
         //Herunder ses referencen til den textfil, der indeholder vores ord-data:
         String fileName = "words.txt";
 
         //Dette vil læse én linie ad gangen:
         String line = null;
 
-        try {
+        try
+        {
             //FileReader læser tekstfiler i standard encoding.
             FileReader fileReader = new FileReader(fileName);
 
@@ -30,38 +32,41 @@ public class ReadFile {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             Category category = null;
-            
-            while ((line = bufferedReader.readLine()) != null) {
+
+            while ((line = bufferedReader.readLine()) != null)
+            {
                 String[] part = line.split(",");
-                
+
                 if (part.length == 1)
                 {
                     // Kategori
-                    category = new Category("","");
-                    
+                    category = new Category("", "");
+
                     category.setName(part[0]);
-                    
+
                     categories.add(category);
                 }
-                
-                if (part.length == 2)
+
+                if (part.length == 2 && category != null)
                 {
                     // Spørgsmål / svar
-                    if (category != null)
-                    {
-                        Question p = new Question(part[0], part[1]);
-                        
-                        category.getQuestions().add(p);
-                    }
-                }    
+
+
+                    Question p = new Question(part[0], part[1]);
+
+                    category.getQuestions().add(p);
+
+                }
             }
 
             // Lukker filen.
             bufferedReader.close();
-        } catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex)
+        {
             System.out.println("Unable to open file '" + fileName + "'");
             return false;
-        } catch (IOException ex) {
+        } catch (IOException ex)
+        {
             System.out.println("Error reading file '" + fileName + "'");
             return false;
         }
