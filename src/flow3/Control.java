@@ -31,7 +31,7 @@ public class Control implements QuizzControlIF
 
         if (lookup(question) == null)
         {
-            categories.add(new Question(question, answer));
+            categories.add(new Category(question, answer));
         }
     }
 
@@ -40,7 +40,7 @@ public class Control implements QuizzControlIF
     {
         for (int i = 0; i < categories.size(); i++)
         {
-            if (question.equals(categories.get(i).getDanword()) == true || question.equals(categories.get(i).getEngword()) == true)
+            if (question.equals(categories.get(i).getQuestion()) == true || question.equals(categories.get(i).getAnswer()) == true)
             {
 
                 categories.remove(i);
@@ -70,7 +70,7 @@ public class Control implements QuizzControlIF
         }
         else {Random random = new Random();
         int nummer = random.nextInt(size());
-        return categories.get(nummer).getDanword();}
+        return categories.get(nummer).getQuestion();}
 
     }
 
@@ -79,7 +79,7 @@ public class Control implements QuizzControlIF
     {
         for (int i = 0; i < categories.size(); i++)
         {
-            if (categories.get(i).getDanword().equalsIgnoreCase(question) && categories.get(i).getEngword().equalsIgnoreCase(answer))
+            if (categories.get(i).getQuestion().equalsIgnoreCase(question) && categories.get(i).getAnswer().equalsIgnoreCase(answer))
             {
                 return true;
             }
@@ -93,9 +93,9 @@ public class Control implements QuizzControlIF
     {
         for (int i = 0; i < categories.size(); i++)
         {
-            if (categories.get(i).getDanword().equals(question))
+            if (categories.get(i).getQuestion().equals(question))
             {
-                String english = categories.get(i).getEngword();
+                String english = categories.get(i).getAnswer();
                 return english;
             }
         }
