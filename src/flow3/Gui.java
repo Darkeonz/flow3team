@@ -188,7 +188,7 @@ public class Gui extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 4, Short.MAX_VALUE)
+                        .addGap(0, 25, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1)
                             .addComponent(jTextGame)
@@ -346,7 +346,8 @@ public class Gui extends javax.swing.JFrame {
         control.load();
         statusjLabel.setText("Questions from textfile has been loaded");
         jLabelcounter.setText("" + control.size());
-
+        model1.addElement(control.getGameNames());
+        System.out.println("" + control.getGameNames());
         //Remember to make sure questions are only loaded once
     }//GEN-LAST:event_jButton3ActionPerformed
 
