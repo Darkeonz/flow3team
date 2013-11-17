@@ -23,7 +23,7 @@ public class WriteFile
         
     }
 
-    public boolean saveFile(ArrayList<Category> liste)
+    public boolean saveFile(ArrayList<Game> liste)
     { 
         PrintWriter pw;
         

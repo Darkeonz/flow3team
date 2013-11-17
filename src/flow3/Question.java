@@ -23,24 +23,24 @@ public class Question
         
     }
 
-    public String getDanword()
+    public String getQuestion()
     {
         return question;
     }
  
-    public void setDanword(String danword)
+    public void setQuestion(String question)
     {
-        this.question = danword;
+        this.question = question;
     }
 
-    public String getEngword()
+    public String getAnswer()
     {
         return answer;
     }
 
-    public void setEngword(String engword)
+    public void setAnswer(String answer)
     {
-        this.answer = engword;
+        this.answer = answer;
     }
 
     public String toSaveString()

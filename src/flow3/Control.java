@@ -11,76 +11,78 @@ import java.util.Random;
  *
  * @author Andreas
  */
-public class Control implements QuizzControlIF
-{
+public class Control implements QuizzControlIF {
 
     private WriteFile writefile;
     private ReadFile readfile;
-    private ArrayList<Category> categories = new ArrayList<>();
-    private Category currentCategory = null;
+    private ArrayList<Game> games = new ArrayList<>();
+    private Game currentgame = null;
 
-    public Control()
-    {
+    public Control() {
         writefile = new WriteFile();
         readfile = new ReadFile();
     }
 
     @Override
-    public void add(String question, String answer)
-    {
-
-        if (lookup(question) == null)
+    public void add(String question, String answer) {
+        
+        // Man skal have valgt et spil for at kunne tilføje et spørgsmål
+        if (currentgame == null)
         {
-            categories.add(new Category(question, answer));
+            return;
+        }
+        
+        if (lookup(question) == null) {
+            currentgame.getQuestions().add(new Question(question, answer));
         }
     }
 
     @Override
-    public boolean delete(String question)
-    {
-        for (int i = 0; i < categories.size(); i++)
+    public boolean delete(String question) {
+        
+        // Man skal have valgt et spil for at kunne tilføje et spørgsmål
+        if (currentgame == null)
         {
-            if (question.equals(categories.get(i).getQuestion()) == true || question.equals(categories.get(i).getAnswer()) == true)
-            {
+            return false;
+        }
+        
+        for (int i = 0; i < currentgame.getQuestions().size(); i++) {
+            if (question.equals(currentgame.getQuestions().get(i).getQuestion())) {
 
-                categories.remove(i);
+                currentgame.getQuestions().remove(i);
                 return true;
-
-
             }
         }
-
 
         return false;
     }
 
     @Override
-    public int size()
-    {
-        int size = categories.size();
+    public int size() {
+        int size = currentgame.getQuestions().size();
         return size;
     }
 
     @Override
-    public String getRandomQuestion()
-    {
-        if (categories.isEmpty())
-        {
-        return null;
-        }
-        else {Random random = new Random();
-        int nummer = random.nextInt(size());
-        return categories.get(nummer).getQuestion();}
+    public String getRandomQuestion() {
 
+        // Man skal have valgt et spil for at kunne tilføje et spørgsmål
+        if (currentgame == null)
+        {
+            return null;
+        }
+        
+        return currentgame.getRandomQuestion().getQuestion();
     }
 
     @Override
-    public boolean checkGuess(String question, String answer)
-    {
-        for (int i = 0; i < categories.size(); i++)
+    public boolean checkGuess(String question, String answer) {
+           if (currentgame == null)
         {
-            if (categories.get(i).getQuestion().equalsIgnoreCase(question) && categories.get(i).getAnswer().equalsIgnoreCase(answer))
-            {
+            return false;
+        }
+        for (int i = 0; i < currentgame.getQuestions().size(); i++) {
+            if (currentgame.getQuestions().get(i).getQuestion().equalsIgnoreCase(question) && currentgame.getQuestions().get(i).getAnswer().equalsIgnoreCase(answer)) {
                 return true;
             }
 
@@ -89,13 +91,16 @@ public class Control implements QuizzControlIF
     }
 
     @Override
-    public String lookup(String question)
-    {
-        for (int i = 0; i < categories.size(); i++)
-        {
-            if (categories.get(i).getQuestion().equals(question))
-            {
-                String english = categories.get(i).getAnswer();
+    public String lookup(String question) {
+        // Tjek om der er valgt et spil
+        if (currentgame == null) {
+            return null;
+        }
+
+        // Find spørgsmål
+        for (int i = 0; i < currentgame.getQuestions().size(); i++) {
+            if (currentgame.getQuestions().get(i).getQuestion().equals(question)) {
+                String english = currentgame.getQuestions().get(i).getAnswer();
                 return english;
             }
         }
@@ -103,58 +108,76 @@ public class Control implements QuizzControlIF
     }
 
     @Override
-    public boolean load()
-    {
+    public boolean load() {
 
-        return readfile.getTxt(categories);
+        return readfile.getTxt(games);
     }
 
     @Override
-    public boolean save()
-    {
-        return writefile.saveFile(categories);
+    public boolean save() {
+        return writefile.saveFile(games);
     }
 
     @Override
-    public void clear()
-    {
-        for (int i = 0; i < categories.size(); i++)
-        {
-            categories.clear();
+    public void clear() {
+        for (int i = 0; i < games.size(); i++) {
+            games.clear();
         }
     }
 
     @Override
-    public String[] getGameNames()
-    {
-        readfile.getTxt(categories);
-        
-        String[] resultat = new String[categories.size()];
-        
-        for (int i = 0; i < categories.size(); i++)
-        {
-            resultat[i] = categories.get(i).getName();
+    public String[] getGameNames() {
+        readfile.getTxt(games);
+
+        String[] resultat = new String[games.size()];
+
+        for (int i = 0; i < games.size(); i++) {
+            resultat[i] = games.get(i).getName();
         }
-         
+
         return resultat;
     }
 
     @Override
-    public void selectGame(String gameName)
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void selectGame(String gameName) {
+        // Find spil
+        for (int i = 0; i < games.size(); i++) {
+            if (games.get(i).getName().equals(gameName)) {
+                // Vi har fundet spillet
+                currentgame = games.get(i);
+            }
+        }
+
+        // Spil findes ikke
+        currentgame = null;
     }
 
     @Override
-    public String getSelectedGameName()
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getSelectedGameName() {
+        if (currentgame == null) {
+            return null;
+        }
+        return currentgame.getName();
     }
 
     @Override
-    public boolean addGame(String name)
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public boolean addGame(String name) {
 
+        for (int i = 0; i < games.size(); i++) {
+            if (games.get(i).getName() == name) {
+
+                return false;
+            }
+
+        }
+
+        Game game1 = new Game();
+        game1.setName(name);
+        games.add(game1);
+
+        return true;
+
+
+    }
 }
+

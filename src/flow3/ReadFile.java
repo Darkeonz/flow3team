@@ -15,8 +15,11 @@ import java.util.ArrayList;
 public class ReadFile
 {
 
-    public boolean getTxt(ArrayList<Category> categories)
+    public boolean getTxt(ArrayList<Game> games)
     {
+        // Clear games
+        games.clear();
+        
         //Herunder ses referencen til den textfil, der indeholder vores ord-data:
         String fileName = "words.txt";
 
@@ -31,7 +34,7 @@ public class ReadFile
             //Læser tekst fra en karakter-input stream, buffer tegn, så som at sørge for effektiv læsning af tegn, arrays og linjer.
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            Category category = null;
+            Game game = null;
 
             while ((line = bufferedReader.readLine()) != null)
             {
@@ -40,21 +43,19 @@ public class ReadFile
                 if (part.length == 1)
                 {
                     // Kategori
-                    category = new Category("", "");
+                    game = new Game();
 
-                    category.setName(part[0]);
+                    game.setName(part[0]);
 
-                    categories.add(category);
+                    games.add(game);
                 }
 
-                if (part.length == 2 && category != null)
+                if (part.length == 2 && game != null)
                 {
                     // Spørgsmål / svar
-
-
                     Question p = new Question(part[0], part[1]);
 
-                    category.getQuestions().add(p);
+                    game.getQuestions().add(p);
 
                 }
             }

@@ -10,8 +10,7 @@ import javax.swing.DefaultListModel;
  *
  * @author Andreas & Emil
  */
-public class Gui extends javax.swing.JFrame
-{
+public class Gui extends javax.swing.JFrame {
 
     /**
      * Creates new form Gui
@@ -19,10 +18,8 @@ public class Gui extends javax.swing.JFrame
     QuizzControlIF control = new Control();
     DefaultListModel model1;
 
-    public Gui()
-    {
+    public Gui() {
         initComponents();
-        control.load();
         model1 = new DefaultListModel();
         jList1.setModel(model1);
     }
@@ -343,14 +340,15 @@ public class Gui extends javax.swing.JFrame
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
     {//GEN-HEADEREND:event_jButton3ActionPerformed
+        model1.clear();
         control.clear();
         control.load();
+
         statusjLabel.setText("Questions from textfile has been loaded");
-        jLabelcounter.setText("" + control.size());
+        jLabelcounter.setText("0");
 //        model1.addElement(control.getGameNames().toString());
         String[] midlertidig = control.getGameNames();
-        for (int i = 0; i < midlertidig.length; i++)
-        {
+        for (int i = 0; i < midlertidig.length; i++) {
             model1.addElement(midlertidig[i]);
         }
 
@@ -372,11 +370,9 @@ public class Gui extends javax.swing.JFrame
     {//GEN-HEADEREND:event_saveWordsButtonActionPerformed
         Boolean save = control.save();
         jLabelcounter.setText("" + control.size());
-        if (save)
-        {
+        if (save) {
             statusjLabel.setText("Words has been saved");
-        } else
-        {
+        } else {
             statusjLabel.setText("Words has not been saved");
         }
     }//GEN-LAST:event_saveWordsButtonActionPerformed
@@ -394,12 +390,10 @@ public class Gui extends javax.swing.JFrame
         String question = jQuestion.getText();
         String answer = jAnswer.getText();
 
-        if (control.checkGuess(question, answer))
-        {
+        if (control.checkGuess(question, answer)) {
             statusjLabel.setText("Correct!");
             jLabelcounter.setText("" + control.size());
-        } else
-        {
+        } else {
             statusjLabel.setText("Wrong. Try agian");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -411,8 +405,7 @@ public class Gui extends javax.swing.JFrame
         jQuestion.setText(word);
         jAnswer.setText("");
         jLabelcounter.setText("" + control.size());
-        if (jQuestion.getText().equals(""))
-        {
+        if (jQuestion.getText().equals("")) {
             statusjLabel.setText("There are no more wordpairs");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -425,43 +418,33 @@ public class Gui extends javax.swing.JFrame
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try
-        {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
-                if ("Nimbus".equals(info.getName()))
-                {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex)
-        {
+        } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex)
-        {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex)
-        {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex)
-        {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new Gui().setVisible(true);
             }
         });
