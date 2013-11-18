@@ -189,7 +189,7 @@ public class Gui extends javax.swing.JFrame
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 139, Short.MAX_VALUE)
+                        .addGap(0, 8, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1)
                             .addComponent(jTextGame)
@@ -323,13 +323,13 @@ public class Gui extends javax.swing.JFrame
     {//GEN-HEADEREND:event_jAddGameActionPerformed
         String Cname = jTextGame.getText();
         model1.addElement(Cname);
+        control.addGame(Cname);
+        statusjLabel.setText("New category has been saved!");
     }//GEN-LAST:event_jAddGameActionPerformed
     
     private void jSelectGameActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jSelectGameActionPerformed
     {//GEN-HEADEREND:event_jSelectGameActionPerformed
-        
-    
-        control.getSelectedGameName();
+        control.selectGame(jList1.getSelectedValue().toString());
         
         
         
