@@ -1,6 +1,4 @@
-røv
-dfhdfg,ghjkhg
-noget
-dfhdfgsdg,ffghjkhg
-word
-kaka,eieie
+﻿Music
+Bad,Michael Jackson
+Geography
+Paris,France
