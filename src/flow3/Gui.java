@@ -10,15 +10,17 @@ import javax.swing.DefaultListModel;
  *
  * @author Andreas & Emil
  */
-public class Gui extends javax.swing.JFrame {
+public class Gui extends javax.swing.JFrame
+{
 
     /**
      * Creates new form Gui
      */
     QuizzControlIF control = new Control();
     DefaultListModel model1;
-
-    public Gui() {
+    
+    public Gui()
+    {
         initComponents();
         model1 = new DefaultListModel();
         jList1.setModel(model1);
@@ -322,94 +324,106 @@ public class Gui extends javax.swing.JFrame {
         String Cname = jTextGame.getText();
         model1.addElement(Cname);
     }//GEN-LAST:event_jAddGameActionPerformed
-
+    
     private void jSelectGameActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jSelectGameActionPerformed
     {//GEN-HEADEREND:event_jSelectGameActionPerformed
+        
+    
+        control.getSelectedGameName();
+        
+        
+        
     }//GEN-LAST:event_jSelectGameActionPerformed
-
+    
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton6ActionPerformed
     {//GEN-HEADEREND:event_jButton6ActionPerformed
         control.delete(jQuestion.getText());
         control.delete(jAnswer.getText());
-        jLabelcounter.setText("" + control.size());
+//        jLabelcounter.setText("" + control.size());
         statusjLabel.setText("Question has been deleted");
         jQuestion.setText("");
         jAnswer.setText("");
-
+        
     }//GEN-LAST:event_jButton6ActionPerformed
-
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
     {//GEN-HEADEREND:event_jButton3ActionPerformed
         model1.clear();
         control.clear();
         control.load();
-
+        
         statusjLabel.setText("Questions from textfile has been loaded");
         jLabelcounter.setText("0");
 //        model1.addElement(control.getGameNames().toString());
         String[] midlertidig = control.getGameNames();
-        for (int i = 0; i < midlertidig.length; i++) {
+        for (int i = 0; i < midlertidig.length; i++)
+        {
             model1.addElement(midlertidig[i]);
         }
 
         //Remember to make sure questions are only loaded once
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton5ActionPerformed
     {//GEN-HEADEREND:event_jButton5ActionPerformed
-
+        
         String question = jQuestion.getText();
         String answer = jAnswer.getText();
         control.add(question, answer);
         statusjLabel.setText("Words has been added");
-        jLabelcounter.setText("" + control.size());
-
+//        jLabelcounter.setText("" + control.size());
+        
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    
     private void saveWordsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveWordsButtonActionPerformed
     {//GEN-HEADEREND:event_saveWordsButtonActionPerformed
         Boolean save = control.save();
-        jLabelcounter.setText("" + control.size());
-        if (save) {
+//        jLabelcounter.setText("" + control.size());
+        if (save)
+        {
             statusjLabel.setText("Words has been saved");
-        } else {
+        } else
+        {
             statusjLabel.setText("Words has not been saved");
         }
     }//GEN-LAST:event_saveWordsButtonActionPerformed
-
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton4ActionPerformed
     {//GEN-HEADEREND:event_jButton4ActionPerformed
         String question = jQuestion.getText();
         String answer = control.lookup(question);
         jAnswer.setText(answer);
-
+        
     }//GEN-LAST:event_jButton4ActionPerformed
-
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
         String question = jQuestion.getText();
         String answer = jAnswer.getText();
-
-        if (control.checkGuess(question, answer)) {
+        
+        if (control.checkGuess(question, answer))
+        {
             statusjLabel.setText("Correct!");
-            jLabelcounter.setText("" + control.size());
-        } else {
+//            jLabelcounter.setText("" + control.size());
+        } else
+        {
             statusjLabel.setText("Wrong. Try agian");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-
+        
         String word = control.getRandomQuestion();
         jQuestion.setText(word);
         jAnswer.setText("");
-        jLabelcounter.setText("" + control.size());
-        if (jQuestion.getText().equals("")) {
+//        jLabelcounter.setText("" + control.size());
+        if (jQuestion.getText().equals(""))
+        {
             statusjLabel.setText("There are no more wordpairs");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void jQuestionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jQuestionActionPerformed
     {//GEN-HEADEREND:event_jQuestionActionPerformed
         // TODO add your handling code here:
@@ -418,33 +432,43 @@ public class Gui extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new Gui().setVisible(true);
             }
         });
