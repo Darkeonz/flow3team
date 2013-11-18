@@ -33,7 +33,7 @@ public class WriteFile
             
             for (int i = 0; i < liste.size(); i++)
             {
-                pw.println(liste.get(i).toSaveString());
+                pw.print(liste.get(i).toSaveString());
                 System.out.println(liste.get(i).toSaveString());
             }
             

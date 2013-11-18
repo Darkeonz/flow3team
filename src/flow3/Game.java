@@ -56,11 +56,12 @@ public class Game {
      */
     public String toSaveString()
     {
-        String resultat = name + "\n";
+        //System.getProperty("line.separator") giver et linjeskift baseret på det system programmet kører på
+        String resultat = name + System.getProperty("line.separator");
         
         for (int i = 0; i < questions.size(); i++)
         {
-            resultat += questions.get(i).toSaveString() + "\n";
+            resultat += questions.get(i).toSaveString() + System.getProperty("line.separator");
         }
         
         return resultat;

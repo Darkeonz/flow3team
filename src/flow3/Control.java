@@ -23,6 +23,11 @@ public class Control implements QuizzControlIF {
         readfile = new ReadFile();
     }
 
+    /**
+     * 
+     * @param question
+     * @param answer 
+     */
     @Override
     public void add(String question, String answer) {
         
@@ -140,6 +145,7 @@ public class Control implements QuizzControlIF {
 
     @Override
     public void selectGame(String gameName) {
+        currentgame = null;
         // Find spil
         for (int i = 0; i < games.size(); i++) {
             if (games.get(i).getName().equals(gameName)) {
@@ -148,8 +154,6 @@ public class Control implements QuizzControlIF {
             }
         }
 
-        // Spil findes ikke
-        currentgame = null;
     }
 
     @Override

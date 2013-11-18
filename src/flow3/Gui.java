@@ -329,9 +329,16 @@ public class Gui extends javax.swing.JFrame
     
     private void jSelectGameActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jSelectGameActionPerformed
     {//GEN-HEADEREND:event_jSelectGameActionPerformed
-        control.selectGame(jList1.getSelectedValue().toString());
-        
-        
+        String tmp = (String) jList1.getSelectedValue();
+        control.selectGame(tmp);
+        String gamename = control.getSelectedGameName();
+        if (gamename == null)
+        {
+            jLabel3.setText("Game not found!");
+        } else
+        {
+            jLabel3.setText(control.getSelectedGameName());
+        }
         
     }//GEN-LAST:event_jSelectGameActionPerformed
     
@@ -372,7 +379,7 @@ public class Gui extends javax.swing.JFrame
         control.add(question, answer);
         statusjLabel.setText("Words has been added");
 //        jLabelcounter.setText("" + control.size());
-        
+
     }//GEN-LAST:event_jButton5ActionPerformed
     
     private void saveWordsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveWordsButtonActionPerformed
