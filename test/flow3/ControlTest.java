@@ -135,4 +135,34 @@ public class ControlTest
   {
     assertTrue(control.size() == 3);
   }
+
+    @Test
+    public void testDelete()
+    {
+    }
+
+    @Test
+    public void testSize()
+    {
+    }
+
+    @Test
+    public void testGetGameNames()
+    {
+    }
+
+    @Test
+    public void testSelectGame()
+    {
+    }
+
+    @Test
+    public void testGetSelectedGameName()
+    {
+    }
+
+    @Test
+    public void testAddGame()
+    {
+    }
 }

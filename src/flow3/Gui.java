@@ -177,7 +177,7 @@ public class Gui extends javax.swing.JFrame
         jPanel1.add(jSelectGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 239, 149, 36));
         jPanel1.add(jTextGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 295, 149, 32));
 
-        jAddGame.setText("Add new game category");
+        jAddGame.setText("Add new game");
         jAddGame.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -185,7 +185,7 @@ public class Gui extends javax.swing.JFrame
                 jAddGameActionPerformed(evt);
             }
         });
-        jPanel1.add(jAddGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 345, -1, 47));
+        jPanel1.add(jAddGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 345, 150, 47));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Title of game");
