@@ -33,8 +33,8 @@ public class ControlTest
   {
     //==>  Replace ControlDemoAdapt() with your Controller =========
     control = new Control(); 
-    control.addGame("Music");
-    control.selectGame("Music");
+    control.addGame("Test");
+    control.selectGame("Test");
     assertTrue(control.size()== 0);
     control.add("hest", "horse");      // trust add()
     control.add("hus", "house");
@@ -57,9 +57,10 @@ public class ControlTest
    */
   public void testLoad()
   {
-    assertTrue(control.save());    
+    assertTrue(control.save()); 
     control.clear();                       
     assertTrue(control.load());
+    control.selectGame("Test");
     assertTrue(control.size() == 3);
     assertEquals(control.lookup("hest"),"horse");
     assertEquals(control.lookup("hus"), "house");
@@ -96,7 +97,7 @@ public class ControlTest
   public void testAdd()
   {
     control.add("ko", "cow");
-    assertTrue(control.size() == 1);
+    assertTrue(control.size() == 4);
     assertEquals(control.lookup("ko"),"cow");
   }
 
@@ -143,33 +144,50 @@ public class ControlTest
     @Test
     public void testDelete()
     {
+        assertTrue(control.lookup("hest").equals("horse"));
         assertTrue(control.delete("hest"));
+        assertTrue(control.lookup("hest") == null);
     }
 
     @Test
     public void testSize()
     {
+        assertTrue(control.size() == 3);
     }
 
     @Test
     public void testGetGameNames()
     {
+        assertTrue(control.getGameNames().length == 1);
+        assertTrue(control.getGameNames()[0].equals("Test"));
+        
         
     }
 
     @Test
     public void testSelectGame()
     {
+        
+        control.selectGame(null);
+        assertTrue(control.getSelectedGameName() == null);
+        control.selectGame("Test");
+        assertTrue(control.getSelectedGameName().equalsIgnoreCase("Test"));
+        
     }
 
     @Test
     public void testGetSelectedGameName()
-    {
+    {control.selectGame("Test");
+    assertTrue(control.getSelectedGameName().equalsIgnoreCase("Test"));
     }
 
     @Test
     public void testAddGame()
     {
-        control.addGame("Music");
+        control.selectGame("Test1");
+        assertTrue(control.getSelectedGameName() == null);
+        control.addGame("Test1");
+        control.selectGame("Test1");
+        assertTrue(control.getSelectedGameName().equals("Test1"));
     }
 }
