@@ -1,4 +1,4 @@
-﻿Music
-Bad,Michael Jackson
-Geography
-Paris,France
+Music
+hest,horse
+hus,house
+skib,ship

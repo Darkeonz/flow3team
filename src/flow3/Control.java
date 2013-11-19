@@ -64,6 +64,10 @@ public class Control implements QuizzControlIF {
 
     @Override
     public int size() {
+        if (currentgame == null) 
+        {
+            return 0;
+        }
         int size = currentgame.getQuestions().size();
         return size;
     }
@@ -128,6 +132,7 @@ public class Control implements QuizzControlIF {
         for (int i = 0; i < games.size(); i++) {
             games.clear();
         }
+           currentgame = null;
     }
 
     @Override

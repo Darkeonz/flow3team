@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
  */
 public class ControlTest
 {  
-  WordPairControlIF control;
+  QuizzControlIF control;
 
   public ControlTest()
   {
@@ -33,10 +33,13 @@ public class ControlTest
   {
     //==>  Replace ControlDemoAdapt() with your Controller =========
     control = new Control(); 
+    control.addGame("Music");
+    control.selectGame("Music");
     assertTrue(control.size()== 0);
     control.add("hest", "horse");      // trust add()
     control.add("hus", "house");
     control.add("skib", "ship");
+    
   }
   
   @After
@@ -85,6 +88,7 @@ public class ControlTest
   public void testClear()
   {
     control.clear();
+      System.out.println(control.size());
     assertTrue(control.size() == 0);
   }
 
@@ -92,7 +96,7 @@ public class ControlTest
   public void testAdd()
   {
     control.add("ko", "cow");
-    assertTrue(control.size() == 4);
+    assertTrue(control.size() == 1);
     assertEquals(control.lookup("ko"),"cow");
   }
 
@@ -139,6 +143,7 @@ public class ControlTest
     @Test
     public void testDelete()
     {
+        assertTrue(control.delete("hest"));
     }
 
     @Test
@@ -149,6 +154,7 @@ public class ControlTest
     @Test
     public void testGetGameNames()
     {
+        
     }
 
     @Test
@@ -164,5 +170,6 @@ public class ControlTest
     @Test
     public void testAddGame()
     {
+        control.addGame("Music");
     }
 }
