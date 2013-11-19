@@ -1,4 +1,13 @@
-Test
-hest,horse
-hus,house
-skib,ship
+Music
+Jolene,Dolly Parton
+Bad,Michael Jackson
+Bohemian Rhapsody,Queen
+Waterloo,Abba
+Geography
+Paris,France
+London,England
+Copenhagen,Denmark
+Language
+Spain,Spanish
+Germany,German
+Brazil,Portuguese

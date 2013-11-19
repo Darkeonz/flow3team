@@ -18,7 +18,7 @@ public class Gui extends javax.swing.JFrame
      */
     QuizzControlIF control = new Control();
     DefaultListModel model1;
-    
+
     public Gui()
     {
         initComponents();
@@ -241,7 +241,7 @@ public class Gui extends javax.swing.JFrame
         jLabel6.setText(control.getSelectedGameName());
         statusjLabel.setText("New category has been saved!");
     }//GEN-LAST:event_jAddGameActionPerformed
-    
+
     private void jSelectGameActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jSelectGameActionPerformed
     {//GEN-HEADEREND:event_jSelectGameActionPerformed
         String tmp = (String) jList1.getSelectedValue();
@@ -254,29 +254,29 @@ public class Gui extends javax.swing.JFrame
         {
             jLabel6.setText(gamename);
         }
-        
+
     }//GEN-LAST:event_jSelectGameActionPerformed
-    
+
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton6ActionPerformed
     {//GEN-HEADEREND:event_jButton6ActionPerformed
         control.delete(jQuestion.getText());
         control.delete(jAnswer.getText());
-//        jLabelcounter.setText("" + control.size());
+        jLabelcounter.setText("" + control.size());
         statusjLabel.setText("Question has been deleted");
         jQuestion.setText("");
         jAnswer.setText("");
-        
+
     }//GEN-LAST:event_jButton6ActionPerformed
-    
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
     {//GEN-HEADEREND:event_jButton3ActionPerformed
         model1.clear();
         control.clear();
         control.load();
-        
+
         statusjLabel.setText("Questions from textfile has been loaded");
         jLabelcounter.setText("0");
-//        model1.addElement(control.getGameNames().toString());
+
         String[] midlertidig = control.getGameNames();
         for (int i = 0; i < midlertidig.length; i++)
         {
@@ -285,22 +285,22 @@ public class Gui extends javax.swing.JFrame
 
         //Remember to make sure questions are only loaded once
     }//GEN-LAST:event_jButton3ActionPerformed
-    
+
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton5ActionPerformed
     {//GEN-HEADEREND:event_jButton5ActionPerformed
-        
+
         String question = jQuestion.getText();
         String answer = jAnswer.getText();
         control.add(question, answer);
         statusjLabel.setText("Words has been added");
-//        jLabelcounter.setText("" + control.size());
+        jLabelcounter.setText("" + control.size());
 
     }//GEN-LAST:event_jButton5ActionPerformed
-    
+
     private void saveWordsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveWordsButtonActionPerformed
     {//GEN-HEADEREND:event_saveWordsButtonActionPerformed
         Boolean save = control.save();
-//        jLabelcounter.setText("" + control.size());
+        jLabelcounter.setText("" + control.size());
         if (save)
         {
             statusjLabel.setText("Words has been saved");
@@ -309,43 +309,43 @@ public class Gui extends javax.swing.JFrame
             statusjLabel.setText("Words has not been saved");
         }
     }//GEN-LAST:event_saveWordsButtonActionPerformed
-    
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton4ActionPerformed
     {//GEN-HEADEREND:event_jButton4ActionPerformed
         String question = jQuestion.getText();
         String answer = control.lookup(question);
         jAnswer.setText(answer);
-        
+
     }//GEN-LAST:event_jButton4ActionPerformed
-    
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
         String question = jQuestion.getText();
         String answer = jAnswer.getText();
-        
+
         if (control.checkGuess(question, answer))
         {
             statusjLabel.setText("Correct!");
-//            jLabelcounter.setText("" + control.size());
+            jLabelcounter.setText("" + control.size());
         } else
         {
             statusjLabel.setText("Wrong. Try agian");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        
+
         String word = control.getRandomQuestion();
         jQuestion.setText(word);
         jAnswer.setText("");
-//        jLabelcounter.setText("" + control.size());
+        jLabelcounter.setText("" + control.size());
         if (jQuestion.getText().equals(""))
         {
             statusjLabel.setText("There are no more wordpairs");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-    
+
     private void jQuestionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jQuestionActionPerformed
     {//GEN-HEADEREND:event_jQuestionActionPerformed
         // TODO add your handling code here:
